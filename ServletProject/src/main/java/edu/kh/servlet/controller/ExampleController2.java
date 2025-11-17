@@ -55,11 +55,19 @@ public class ExampleController2 extends HttpServlet{
 			= req.getRequestDispatcher("/WEB-INF/views/result.jsp");
 									// webapp 폴더 기준으로 작성
 		
+		// -> webapp 폴더는 웹 애플리케이션의 루트(root) 디렉토리로,
+		// 브라우저를 통해 접근 가능한 정적 / 동적 리소스들이 위치하는 폴더
+		// -> webapp 폴더가 컨텍스트 루트(/)로 설정되기 때문에,
+		//    해당 경로가 webapp 내부 경로로 해석되는 것.
+		
+		// WEB-INF 폴더에 있는 파일들은 클라이언트가 url로 직접 접근할수 없는 영역,
+		// 서블릿을 통해서만 접근 가능
+		
 		dispatcher.forward(req, resp);
-		
-		
-		
-		
+		// RequestDispatcher 객체를 사용하여 현재 요청(req)와 응답(resp)을
+		// 지정한 JSP 페이지(result.jsp)로 전달하는 작업
+		// -> 즉, 현재 서블릿(ExampleController2)에서 처리하던 요청을
+		// result.jsp로 전달하고 제어권을 그곳으로 넘김(== 위임하다)
 		
 		
 	}
