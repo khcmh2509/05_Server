@@ -12,6 +12,8 @@ import java.util.Map;
 public interface TodoListService {
 
 	Map<String, Object> todoListFullView() throws Exception;
+
+	int todoAdd(String title, String detail) throws Exception;
 	
 	
 	

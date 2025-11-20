@@ -69,6 +69,22 @@
 	</table>
 	
 	
+	<%-- session 범위에 message 가 있는 경우 --%>
+	<c:if test="${not empty sessionScope.message}">
+		<script>
+			// JS 영역
+			alert("${message}");
+			// JSP 해석 순위
+			// 1순위 : Java(EL/JSTL)
+			// 2순위 : Front(HTML/CSS/JS)
+		</script>
+		
+		<%-- message를 한 번만 사용하고 제거 --%>
+		<c:remove var="message" scope="session" />
+	</c:if>
+	
+	
+	
 	
 </body>
 </html>
