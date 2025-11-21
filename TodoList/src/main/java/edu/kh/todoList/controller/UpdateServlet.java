@@ -57,11 +57,42 @@ public class UpdateServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		
-		
-		
-		
-		
+		try {
+			// 전달받은 파라미터 얻어오기 (제목, 상세내용, todoNo)
+			String title = req.getParameter("title");
+			String detail = req.getParameter("detail");
+			int todoNo = Integer.parseInt(req.getParameter("todoNo"));
+			
+			TodoListService service = new TodoListServiceImpl();
+			int result = service.todoUpdate(todoNo, title, detail);
+			
+			// 수정 성공 시
+			// 상세 조회 페이지로 redirect
+			// "수정되었습니다" message 를 출력
+			
+			// 수정 실패 시
+			// 수정 화면으로 redirect
+			// "수정 실패" message 를 출력
+			String url = null;
+			String message = null;
+			
+			if(result > 0) { // 성공
+				url = "/todo/detail?todoNo=" + todoNo;
+				message = "수정 되었습니다";
+				
+			} else { // 실패
+				url = "/todo/update?todoNo=" + todoNo;
+				message = "수정 실패";
+			}
+			
+			req.getSession().setAttribute("message", message);
+			
+			resp.sendRedirect(url);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
+	
 }
