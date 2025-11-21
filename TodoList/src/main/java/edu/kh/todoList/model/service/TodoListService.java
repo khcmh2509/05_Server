@@ -18,6 +18,10 @@ public interface TodoListService {
 	int todoAdd(String title, String detail) throws Exception;
 
 	Todo todoDetail(int todoNo) throws Exception;
+
+	int todoComplete(int todoNo) throws Exception;
+
+	int todoDelete(int todoNo) throws Exception;
 	
 	
 	
