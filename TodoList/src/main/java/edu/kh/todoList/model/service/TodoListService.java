@@ -2,6 +2,8 @@ package edu.kh.todoList.model.service;
 
 import java.util.Map;
 
+import edu.kh.todoList.model.dto.Todo;
+
 // 유지보수성과 확장성, 테스트 용이성 때문에
 // Service / DAO 단은 interface와 상속받는 구현체 class로 작성한다
 // -> Controller 는 ServiceImpl을 직접 사용하지 않고, 
@@ -14,6 +16,8 @@ public interface TodoListService {
 	Map<String, Object> todoListFullView() throws Exception;
 
 	int todoAdd(String title, String detail) throws Exception;
+
+	Todo todoDetail(int todoNo) throws Exception;
 	
 	
 	

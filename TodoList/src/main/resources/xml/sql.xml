@@ -26,6 +26,15 @@
 		VALUES(SEQ_TODO_NO.NEXTVAL, ?, ?, DEFAULT, DEFAULT)
 	</entry>
 	
+	<!-- 할 일 상세조회  -->
+	<entry key="todoDetail">
+		SELECT TODO_NO, 
+		TODO_TITLE, TODO_DETAIL, TODO_COMPLETE,
+		TO_CHAR(REG_DATE, 'YYYY-MM-DD HH24:MI:SS') REG_DATE
+		FROM TB_TODO
+		WHERE TODO_NO = ?
+	</entry>
+	
 	
 	
 	
